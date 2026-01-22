@@ -55,3 +55,26 @@ pipeline {
         }
     }
 }
+// Existing stages ku aprm idhu add pannu (Docker stages)
+
+stage('Build Docker Image') {
+    steps {
+        echo 'Building Docker image...'
+        script {
+            def image = docker.build("mahalakshmi-farm:${env.BUILD_ID}")
+        }
+    }
+}
+
+stage('Push to Docker Hub') {
+    steps {
+        echo 'Pushing to Docker Hub...'
+        script {
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-id') {
+                def image = docker.image("mahalakshmi-farm:${env.BUILD_ID}")
+                image.push()
+                image.push('latest')
+            }
+        }
+    }
+}
