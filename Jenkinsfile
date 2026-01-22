@@ -56,25 +56,20 @@ pipeline {
     }
 }
 // Existing stages ku aprm idhu add pannu (Docker stages)
-
 stage('Build Docker Image') {
     steps {
-        echo 'Building Docker image...'
         script {
-            def image = docker.build("mahalakshmi-farm:${env.BUILD_ID}")
-        }
-    }
-}
-
-stage('Push to Docker Hub') {
-    steps {
-        echo 'Pushing to Docker Hub...'
-        script {
-            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-id') {
-                def image = docker.image("mahalakshmi-farm:${env.BUILD_ID}")
-                image.push()
-                image.push('latest')
-            }
+            // Build Docker image
+            bat 'docker build -t farm-management:latest .'
+            
+            // Stop old container if running
+            bat 'docker stop farm-management || exit 0'
+            bat 'docker rm farm-management || exit 0'
+            
+            // Run new container with PORT 5000
+            bat 'docker run -d --name farm-management -p 5000:5000 -p 5001:5001 farm-management:latest'
+            
+            echo 'Farm Management System running on http://localhost:5000'
         }
     }
 }
