@@ -27,7 +27,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Installing Node.js dependencies..."
-                bat "C:\\Program Files\\nodejs\\npm install"
+                bat '"C:\\Program Files\\nodejs\\npm.cmd" install'
+
             }
         }
 
