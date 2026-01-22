@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Farm | Sign Up</title>
+
+<!-- Premium Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* 🌈 PREMIUM BACKGROUND */
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Manrope',sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, #d1fae5, transparent 40%),
+    radial-gradient(circle at 80% 80%, #bbf7d0, transparent 40%),
+    linear-gradient(135deg,#ecfdf5,#bbf7d0,#86efac);
+  background-size:200% 200%;
+  animation:bgFlow 20s ease infinite;
+  overflow:hidden;
+}
+
+@keyframes bgFlow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* ✨ FLOATING PARTICLES */
+.particle{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:#22c55e;
+  border-radius:50%;
+  opacity:.25;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(110vh) scale(.6);}
+  to{transform:translateY(-20vh) scale(1.4);}
+}
+
+/* 💎 GLASS CARD */
+.card{
+  width:460px;
+  padding:50px;
+  border-radius:40px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(26px);
+  box-shadow:0 50px 120px rgba(22,163,74,.45);
+  animation:cardFloat 6s ease-in-out infinite;
+  z-index:2;
+}
+
+@keyframes cardFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-14px);}
+}
+
+/* 🌱 TITLE */
+h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:34px;
+  color:#14532d;
+  margin-bottom:6px;
+}
+
+.subtitle{
+  text-align:center;
+  font-size:14px;
+  color:#166534;
+  margin-bottom:34px;
+}
+
+/* ✍ INPUT */
+input{
+  width:100%;
+  padding:18px 24px;
+  margin-top:18px;
+  border-radius:50px;
+  border:1px solid rgba(34,197,94,.35);
+  background:rgba(255,255,255,.96);
+  font-size:14px;
+  transition:.4s;
+}
+
+input:focus{
+  outline:none;
+  border-color:#22c55e;
+  box-shadow:0 0 0 4px rgba(34,197,94,.35);
+  transform:scale(1.05);
+}
+
+/* ❌ ERROR */
+small{
+  display:block;
+  height:16px;
+  margin-left:18px;
+  font-size:12px;
+  font-weight:600;
+  color:#dc2626;
+}
+
+/* 🚀 BUTTON */
+button{
+  width:100%;
+  margin-top:36px;
+  padding:18px;
+  border:none;
+  border-radius:60px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#14532d,#22c55e,#86efac);
+  color:#064e3b;
+  box-shadow:0 30px 80px rgba(22,163,74,.7);
+  transition:.45s;
+}
+
+button:hover{
+  transform:translateY(-12px) scale(1.1);
+  box-shadow:0 45px 120px rgba(22,163,74,1);
+}
+
+/* ✅ SUCCESS */
+.success{
+  margin-top:20px;
+  text-align:center;
+  font-weight:700;
+  color:#166534;
+}
+
+/* 🌙 POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(20,83,45,.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.popup-box{
+  width:340px;
+  padding:34px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#ecfdf5,#bbf7d0);
+  text-align:center;
+  animation:pop .4s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.6);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.popup-box h3{color:#14532d;}
+.popup-box p{font-size:14px;}
+
+.popup-box button{
+  width:120px;
+  margin:12px;
+  padding:10px;
+  border:none;
+  border-radius:40px;
+  font-weight:600;
+}
+
+.yes{background:#16a34a;color:white;}
+.no{background:#dc2626;color:white;}
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<35;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=12+Math.random()*18+"s";
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="card">
+  <h2>🌾 Smart Farm</h2>
+  <div class="subtitle">Next-Gen Green Agriculture</div>
+
+  <input id="username" placeholder="Username">
+  <small id="userError"></small>
+
+  <input id="email" placeholder="Email">
+  <small id="emailError"></small>
+
+  <input type="password" id="password" placeholder="Password">
+  <small id="passError"></small>
+
+  <button onclick="signup()">CREATE ACCOUNT</button>
+  <div class="success" id="successMsg"></div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3>Save Details?</h3>
+    <p>Store account securely?</p>
+    <button class="yes" onclick="saveData()">Save</button>
+    <button class="no" onclick="closePopup()">Cancel</button>
+    <script src="signup.js"></script>
+        <p>Please login <a href="index.html">lOGIN</a></p>
+
+  </div>
+</div>
+
+<script>
+let tempUser={};
+
+function signup(){
+  userError.innerText="";
+  emailError.innerText="";
+  passError.innerText="";
+  successMsg.innerText="";
+
+  if(!/^[A-Za-z]{3,15}$/.test(username.value)){
+    userError.innerText="3–15 letters only";
+    return;
+  }
+  if(!/^[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(email.value)){
+    emailError.innerText="Invalid email";
+    return;
+  }
+  if(!/^[a-z0-9]{6,12}$/.test(password.value)){
+    passError.innerText="6–12 chars";
+    return;
+  }
+
+  tempUser={username:username.value,email:email.value,password:password.value};
+  popup.style.display="flex";
+}
+
+function saveData(){
+  localStorage.setItem("userData",JSON.stringify(tempUser));
+  popup.style.display="none";
+  successMsg.innerText="🎉 Signup Successful!";
+}
+function closePopup(){
+  popup.style.display="none";
+}
+
+</script>
+
+</body>
+</html>

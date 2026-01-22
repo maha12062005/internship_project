@@ -1,0 +1,49 @@
+body{
+  background: linear-gradient(to right,#f7971e,#ffd200);
+  font-family: Arial;
+  margin:0;
+}
+
+header{
+  background:#b36b00;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+}
+
+.box, .history{
+  background:white;
+  width:340px;
+  margin:20px auto;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  animation: zoom 0.8s ease;
+}
+
+input{
+  width:90%;
+  padding:8px;
+  margin:8px;
+}
+
+button{
+  background:#b36b00;
+  color:white;
+  border:none;
+  padding:10px;
+  width:95%;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+@keyframes zoom{
+  from{transform:scale(0.5); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}

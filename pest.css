@@ -1,0 +1,49 @@
+body{
+  background: linear-gradient(to right,#8360c3,#2ebf91);
+  font-family: Arial;
+  margin:0;
+}
+
+header{
+  background:#4a148c;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+}
+
+.box, .history{
+  background:white;
+  width:340px;
+  margin:20px auto;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  animation: fade 0.8s ease;
+}
+
+input, select{
+  width:90%;
+  padding:8px;
+  margin:8px;
+}
+
+button{
+  background:#4a148c;
+  color:white;
+  border:none;
+  padding:10px;
+  width:95%;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}

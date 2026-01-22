@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farm To Table System</title>
+  <link rel="stylesheet" href="farmtable.css">
+</head>
+<body>
+
+<header>
+  <h2>🛒 Farm To Table Tracking</h2>
+  <a href="dashboard.html">⬅ Back</a>
+</header>
+
+<div class="box">
+  <h3>Add Crop Supply</h3>
+
+  <label>Farmer Name</label>
+  <input type="text" id="farmer">
+
+  <label>Crop Name</label>
+  <input type="text" id="crop">
+
+  <label>Quantity (Kg)</label>
+  <input type="number" id="qty">
+
+  <label>Price per Kg (₹)</label>
+  <input type="number" id="price">
+
+  <button onclick="addSupply()">Add Supply</button>
+
+  <p id="msg"></p>
+</div>
+
+<div class="history">
+  <h3>📦 Supply List</h3>
+  <ul id="supplyList"></ul>
+</div>
+
+<script src="farmtable.js"></script>
+</body>
+</html>

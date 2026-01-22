@@ -1,0 +1,49 @@
+body{
+  background: linear-gradient(to right,#2193b0,#6dd5ed);
+  font-family: Arial;
+  margin: 0;
+}
+
+header{
+  background:#0b4f6c;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+}
+
+.box, .history{
+  background:white;
+  width:320px;
+  margin:20px auto;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  animation: slide 0.8s ease;
+}
+
+input, select{
+  width:90%;
+  padding:8px;
+  margin:8px;
+}
+
+button{
+  background:#0b4f6c;
+  color:white;
+  border:none;
+  padding:10px;
+  width:95%;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+@keyframes slide{
+  from{opacity:0; transform:translateX(-20px);}
+  to{opacity:1; transform:translateX(0);}
+}

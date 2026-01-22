@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Farm Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header>
+  <h2>🌱 Smart Farm Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+  <div class="card" onclick="goTo('irrigation.html')">
+    💧
+    <h3>Irrigation</h3>
+    <p>Water management & schedule</p>
+  </div>
+
+  <div class="card" onclick="goTo('greenhouse.html')">
+    🏡
+    <h3>Greenhouse</h3>
+    <p>Temperature & humidity control</p>
+  </div>
+
+  <div class="card" onclick="goTo('fertilizer.html')">
+    🌾
+    <h3>Fertilizer</h3>
+    <p>NPK recommendation</p>
+  </div>
+
+  <div class="card" onclick="goTo('pest.html')">
+    🐛
+    <h3>Pest Control</h3>
+    <p>Disease prediction</p>
+  </div>
+
+  <div class="card" onclick="goTo('farmtable.html')">
+    🛒
+    <h3>Farm to Table</h3>
+    <p>Crop selling & tracking</p>
+  </div>
+
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

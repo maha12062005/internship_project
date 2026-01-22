@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fertilizer Recommendation</title>
+  <link rel="stylesheet" href="fertilizer.css">
+</head>
+<body>
+
+<header>
+  <h2>🌾 Fertilizer Recommendation System</h2>
+  <a href="dashboard.html">⬅ Back</a>
+</header>
+
+<div class="box">
+  <h3>Soil Test Details</h3>
+
+  <label>Nitrogen (N)</label>
+  <input type="number" id="n" placeholder="Eg: 40">
+
+  <label>Phosphorus (P)</label>
+  <input type="number" id="p" placeholder="Eg: 30">
+
+  <label>Potassium (K)</label>
+  <input type="number" id="k" placeholder="Eg: 20">
+
+  <label>Crop Type</label>
+  <input type="text" id="crop" placeholder="Eg: Rice, Wheat">
+
+  <button onclick="recommendFertilizer()">Get Recommendation</button>
+
+  <p id="result"></p>
+</div>
+
+<div class="history">
+  <h3>📜 Fertilizer History</h3>
+  <ul id="historyList"></ul>
+</div>
+
+<script src="fertilizer.js"></script>
+</body>
+</html>

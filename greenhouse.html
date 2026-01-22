@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Greenhouse Automation</title>
+  <link rel="stylesheet" href="greenhouse.css">
+</head>
+<body>
+
+<header>
+  <h2>🏡 Smart Greenhouse</h2>
+  <a href="dashboard.html">⬅ Back</a>
+</header>
+
+<div class="box">
+  <h3>Sensor Data (Simulation)</h3>
+
+  <label>Temperature (°C)</label>
+  <input type="number" id="temp">
+
+  <label>Humidity (%)</label>
+  <input type="number" id="humidity">
+
+  <label>Soil Moisture (%)</label>
+  <input type="number" id="soil">
+
+  <button onclick="checkStatus()">Check & Save</button>
+
+  <p id="result"></p>
+</div>
+
+<div class="history">
+  <h3>📊 Greenhouse History</h3>
+  <ul id="historyList"></ul>
+</div>
+
+<script src="greenhouse.js"></script>
+</body>
+</html>

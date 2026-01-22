@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pest & Disease Prediction</title>
+  <link rel="stylesheet" href="pest.css">
+</head>
+<body>
+
+<header>
+  <h2>🐛 Pest & Disease Prediction</h2>
+  <a href="dashboard.html">⬅ Back</a>
+</header>
+
+<div class="box">
+  <h3>Enter Crop Details</h3>
+
+  <label>Crop Name</label>
+  <input type="text" id="crop" placeholder="Eg: Tomato, Rice">
+
+  <label>Leaf Color</label>
+  <select id="color">
+    <option value="">Select</option>
+    <option value="Green">Green</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Brown">Brown</option>
+  </select>
+
+  <label>Spots on Leaf</label>
+  <select id="spots">
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+  <label>Insects Seen</label>
+  <select id="insects">
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+  <button onclick="predictPest()">Predict</button>
+
+  <p id="result"></p>
+</div>
+
+<div class="history">
+  <h3>📜 Pest History</h3>
+  <ul id="historyList"></ul>
+</div>
+
+<script src="pest.js"></script>
+</body>
+</html>
