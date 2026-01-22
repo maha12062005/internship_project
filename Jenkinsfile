@@ -3,7 +3,6 @@ pipeline {
 
     triggers {
         pollSCM('H/2 * * * *')
-        
     }
 
     environment {
@@ -11,7 +10,6 @@ pipeline {
     }
 
     stages {
-
         stage('Start') {
             steps {
                 echo "Pipeline Started for ${APP_NAME}"
@@ -28,7 +26,6 @@ pipeline {
             steps {
                 echo "Installing Node.js dependencies..."
                 bat '"C:\\Program Files\\nodejs\\npm.cmd" install'
-
             }
         }
 
@@ -46,27 +43,19 @@ pipeline {
         }
     }
 
+    // SINGLE POST BLOCK ONLY - Merge pannirukkom
     post {
         success {
-            echo "Pipeline executed successfully!"
+            echo '🚀 Farm Management System Build SUCCESS!'
+            echo 'Project ready for deployment!'
         }
         failure {
-            echo "Pipeline failed! Check logs."
+            echo '❌ Build FAILED!'
+            echo 'Check the logs above for errors'
         }
-    }
-}
-// Existing stages ku aprm idhu add pannu (Docker stages)
-post {
-    success {
-        echo '🚀 Farm Management System Build SUCCESS!'
-        echo 'Project ready for deployment!'
-    }
-    failure {
-        echo '❌ Build FAILED !'
-        echo 'Check the logs above for errors'
-    }
-    always {
-        echo 'Pipeline execution completed'
-        cleanWs()  // Workspace clean pannidum
+        always {
+            echo 'Pipeline execution completed'
+            cleanWs()  // Workspace clean pannidum
+        }
     }
 }
