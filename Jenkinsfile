@@ -20,7 +20,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR-USERNAME/YOUR-REPO.git'
+                git branch: 'main', url: 'https://github.com/maha12062005/internship_project.git'
             }
         }
 
