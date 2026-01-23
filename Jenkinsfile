@@ -61,12 +61,13 @@ pipeline {
 }
 stage('Build Docker Image') {
     steps {
-        bat 'docker build -t farm-management-system .'
+        bat 'docker build -t farm-app .'
+        bat 'docker tag farm-app localhost:3000/farm-app:latest'
     }
 }
 
 stage('Run Docker Container') {
     steps {
-        bat 'docker run -d -p 3000:3000 farm-management-system'
+        bat 'docker run -d -p 3000:3000 farm-app'
     }
 }
