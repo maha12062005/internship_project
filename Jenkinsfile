@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         APP_NAME = "Farm Management System"
+        IMAGE_NAME = "farm-app"
     }
 
     stages {
@@ -41,13 +42,38 @@ pipeline {
                 echo "Project Build Successful!"
             }
         }
+
+        // ✅ DOCKER STAGES HERE - stages { } INNSIDE!
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker image..."
+                bat 'docker build -t %IMAGE_NAME% .'
+                bat 'docker tag %IMAGE_NAME% localhost:3000/%IMAGE_NAME%:latest'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                echo "Running Docker container..."
+                bat 'docker stop %IMAGE_NAME% || true'
+                bat 'docker rm %IMAGE_NAME% || true'
+                bat 'docker run -d -p 3000:3000 --name %IMAGE_NAME% %IMAGE_NAME%'
+            }
+        }
+
+        stage('Test Application') {
+            steps {
+                echo "Testing application..."
+                bat 'curl http://localhost:3000 || exit 1'
+            }
+        }
     }
 
-    // SINGLE POST BLOCK ONLY - Merge pannirukkom
     post {
         success {
             echo '🚀 Farm Management System Build SUCCESS!'
             echo 'Project ready for deployment!'
+            echo "App live at: http://localhost:3000"
         }
         failure {
             echo '❌ Build FAILED!'
@@ -55,19 +81,9 @@ pipeline {
         }
         always {
             echo 'Pipeline execution completed'
-            cleanWs()  // Workspace clean pannidum
+            bat 'docker stop %IMAGE_NAME% || true'
+            bat 'docker rm %IMAGE_NAME% || true'
+            cleanWs()
         }
-    }
-}
-stage('Build Docker Image') {
-    steps {
-        bat 'docker build -t farm-app .'
-        bat 'docker tag farm-app localhost:3000/farm-app:latest'
-    }
-}
-
-stage('Run Docker Container') {
-    steps {
-        bat 'docker run -d -p 3000:3000 farm-app'
     }
 }
